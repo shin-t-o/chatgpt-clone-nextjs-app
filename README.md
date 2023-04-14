@@ -39,3 +39,5 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 ### hosting
 not covered, so choose your favorite service.
 
+## Ref
+https://zenn.dev/shin_t_o_/articles/chatgpt-clone-app
