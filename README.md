@@ -39,5 +39,9 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 ### hosting
 not covered, so choose your favorite service.
 
+
+## Note
+be careful not to commit `.env` file after updating API key / firebaseConfig
+
 ## Ref
 https://zenn.dev/shin_t_o_/articles/chatgpt-clone-app
