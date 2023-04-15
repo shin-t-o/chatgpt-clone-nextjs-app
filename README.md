@@ -22,7 +22,7 @@ yarn dev
 1. register and get API key to use ChatGPT to get chat response
 2. register your application with Firebase to add Firebase Authentication to the app, and store chat messages history in Firestore
 
-then fill the `.env` file.
+then `$ touch .env` file and fill it below.
 
 ```ini:.env
 OPENAI_ENDPOINT=https://api.openai.com/v1/chat/completions
@@ -39,9 +39,6 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 ### hosting
 not covered, so choose your favorite service.
 
-
-## Note
-be careful not to commit `.env` file after updating API key / firebaseConfig
 
 ## Ref
 https://zenn.dev/shin_t_o_/articles/chatgpt-clone-app
