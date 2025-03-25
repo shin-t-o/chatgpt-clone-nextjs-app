@@ -1,3 +1,19 @@
+code {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  font-family: "Ricty Diminished","Ricty","Myrica M","Migu 1M","Source Han Code JP","SFMono-Regular","Consolas","Liberation Mono","Menlo","Courier",monospace;
+  padding: 0.1em 0.4em
+}
+
+pre {
+  font-size: 14px;
+}
+
+body {
+  margin: 0;
+  place-items: center;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -12,21 +28,4 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
-
-
-body {
-  margin: 0;
-  place-items: center;
-}
-
-code {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  font-family: "Ricty Diminished","Ricty","Myrica M","Migu 1M","Source Han Code JP","SFMono-Regular","Consolas","Liberation Mono","Menlo","Courier",monospace;
-  padding: 0.1em 0.4em
-}
-
-pre {
-  font-size: 14px;
 }

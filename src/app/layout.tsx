@@ -1,6 +1,6 @@
-/* eslint-disable @next/next/no-head-element */
 import Provider from './Provider'
-import * as style from './page.module.css'
+// @ts-ignore
+import * as style from './page.css'
 
 export default function RootLayout({
   children,
@@ -8,8 +8,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html>
-      <head></head>
+    <html lang="ja">
+      <head />
       <body>
         {/* @ts-ignore */}
         <div className={style.root}>
