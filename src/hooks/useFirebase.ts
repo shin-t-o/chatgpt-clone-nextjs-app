@@ -1,4 +1,4 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useAtom, useAtomValue } from 'jotai'
 import { addDoc, collection, doc, setDoc, Timestamp } from 'firebase/firestore'
 import { useRouter } from 'next/navigation'
 import { ulid } from 'ulid'
@@ -12,18 +12,18 @@ import { makePostData, makeSummarizeTitle } from '@/utils/makePostData'
 import { currentThreadIdAtom } from '@/states/atom/currentThreadIdAtom'
 import { threadListAtom } from '@/states/atom/threadListAtom'
 import { isFirstPostAtom } from '@/states/atom/isFirstPostAtom'
-import { messageWithDateAtom as threadMsg } from '@/states/atom/messageWithDateAtom'
-import { FirebaseThread } from '@/type'
+import { messageAtom as threadMsg } from '@/states/atom/messageAtom'
+import type { FirebaseThread } from '@/type'
 import { isLoadingAtom } from '@/states/atom/isLoadingAtom'
 
 export const useFirebase = () => {
   const router = useRouter()
-  const currentId = useRecoilValue(currentThreadIdAtom)
-  const [currentMsg, setCurrentMsg] = useRecoilState(threadMsg(currentId))
-  const [threadList, setThreadList] = useRecoilState(threadListAtom)
-  const [isFirstPost, setIsFirstPost] = useRecoilState(isFirstPostAtom)
-  const [isLoading, setIsLoading] = useRecoilState(isLoadingAtom)
-  const [, setMessages] = useRecoilState(threadMsg(currentId))
+  const currentId = useAtomValue(currentThreadIdAtom)
+  const [currentMsg, setCurrentMsg] = useAtom(threadMsg)
+  const [threadList, setThreadList] = useAtom(threadListAtom)
+  const [isFirstPost, setIsFirstPost] = useAtom(isFirstPostAtom)
+  const [isLoading, setIsLoading] = useAtom(isLoadingAtom)
+  const [, setMessages] = useAtom(threadMsg)
 
   const onClickNew = () => {
     if (isFirstPost) return
@@ -62,7 +62,7 @@ export const useFirebase = () => {
         },
       ])
       addFirestoreDoc(res.choices[0].message, threadId)
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error(e)
     }
   }
@@ -107,7 +107,7 @@ export const useFirebase = () => {
   const addMessages = async (newMessage: ChatGptMessage) => {
     // 同期/非同期処理が混在しているため一時変数に格納してupdate先を指定
     let threadId = currentId
-    let currentThreadList = [...threadList].sort(
+    const currentThreadList = [...threadList].sort(
       // @ts-ignore
       (a, b) => b.createdAt - a.createdAt
     )

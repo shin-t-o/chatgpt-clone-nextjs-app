@@ -1,6 +1,3 @@
-import { atom } from 'recoil'
+import { atom } from 'jotai'
 
-export const isLoadingAtom = atom<boolean>({
-  key: 'states/atom/isLoadingAtom',
-  default: false,
-})
+export const isLoadingAtom = atom<boolean>(false)

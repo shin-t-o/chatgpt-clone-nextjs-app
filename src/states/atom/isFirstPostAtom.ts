@@ -1,6 +1,3 @@
-import { atom } from 'recoil'
+import { atom } from 'jotai'
 
-export const isFirstPostAtom = atom<boolean>({
-  key: 'states/atom/isFirstPostAtom',
-  default: true,
-})
+export const isFirstPostAtom = atom<boolean>(true)

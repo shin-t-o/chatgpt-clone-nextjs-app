@@ -1,17 +1,17 @@
 import { useEffect } from 'react'
-import { useRecoilState } from 'recoil'
+import { useSetAtom } from 'jotai'
 import { collection, getDocs } from 'firebase/firestore'
 import { THREAD_COLLECTION as COLLECTION } from '@/constant/firebase'
 import { db } from '@/firebase/config'
 import { currentThreadIdAtom } from '@/states/atom/currentThreadIdAtom'
 import { threadListAtom } from '@/states/atom/threadListAtom'
 import { isFirstPostAtom } from '@/states/atom/isFirstPostAtom'
-import { FirebaseThread } from '@/type'
+import type { FirebaseThread } from '@/type'
 
 export const useFirebaseInitialize = (currentId: string) => {
-  const [, setCurrentId] = useRecoilState(currentThreadIdAtom)
-  const [, setThreadList] = useRecoilState(threadListAtom)
-  const [, setIsFirstPost] = useRecoilState(isFirstPostAtom)
+  const setCurrentId = useSetAtom(currentThreadIdAtom)
+  const setThreadList = useSetAtom(threadListAtom)
+  const setIsFirstPost = useSetAtom(isFirstPostAtom)
 
   useEffect(() => {
     setIsFirstPost(currentId === '')
@@ -26,5 +26,5 @@ export const useFirebaseInitialize = (currentId: string) => {
       setCurrentId(currentId)
       setThreadList(tList)
     })()
-  }, [])
+  }, [currentId, setCurrentId, setThreadList, setIsFirstPost])
 }

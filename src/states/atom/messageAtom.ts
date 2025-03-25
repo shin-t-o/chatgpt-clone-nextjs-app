@@ -1,16 +1,11 @@
-import { FirebaseMessage } from '@/type'
-import { atomFamily } from 'recoil'
+import type { FirebaseMessage } from '@/type'
+import { atom } from 'jotai'
 
-export const messageAtom = atomFamily<FirebaseMessage[], string | null>(
+export const messageAtom = atom<FirebaseMessage[]>([
   {
-    key: 'states/atom/messageAtom',
-    default: [
-      {
-        role: 'system',
-        content:
-          'サービス利用ユーザーからの質問や語りかけがあるので、サービスBotとして返答してください。',
-        createdAt: null,
-      },
-    ],
-  }
-)
+    role: 'system',
+    content:
+      'サービス利用ユーザーからの質問や語りかけがあるので、サービスBotとして返答してください。',
+    createdAt: null,
+  },
+])

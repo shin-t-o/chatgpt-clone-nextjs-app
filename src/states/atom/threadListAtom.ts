@@ -1,14 +1,11 @@
-import { FirebaseThread } from '@/type'
+import type { FirebaseThread } from '@/type'
 import { Timestamp } from 'firebase/firestore'
-import { atom, atomFamily } from 'recoil'
+import { atom } from 'jotai'
 
-export const threadListAtom = atom<FirebaseThread[]>({
-  key: 'states/atom/threadListAtom',
-  default: [
-    {
-      id: '',
-      title: '',
-      createdAt: Timestamp.fromDate(new Date()),
-    },
-  ],
-})
+export const threadListAtom = atom<FirebaseThread[]>([
+  {
+    id: '',
+    title: '',
+    createdAt: Timestamp.fromDate(new Date()),
+  },
+])

@@ -1,6 +1,3 @@
-import { atom } from 'recoil'
+import { atom } from 'jotai'
 
-export const currentThreadIdAtom = atom<string>({
-  key: 'states/atom/currentThreadIdAtom',
-  default: '',
-})
+export const currentThreadIdAtom = atom<string>('')

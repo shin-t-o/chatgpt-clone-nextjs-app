@@ -8,7 +8,7 @@ import {
   ListItemButton,
   ListItemText,
 } from '@mui/material'
-import { useRecoilValue } from 'recoil'
+import { useAtomValue } from 'jotai'
 import { ThreadList } from './ThreadList'
 import { drawerWidth } from '@/constant/style'
 import { threadListAtom } from '@/states/atom/threadListAtom'
@@ -20,7 +20,7 @@ import { getAuth, signOut } from 'firebase/auth'
 
 const Sidebar = ({ isMdUp }: { isMdUp: boolean }) => {
   const { user } = useFirebaseAuth()
-  const threadList = useRecoilValue(threadListAtom)
+  const threadList = useAtomValue(threadListAtom)
   const { onClickNew } = useFirebase()
 
   const handleSignOut = async () => {

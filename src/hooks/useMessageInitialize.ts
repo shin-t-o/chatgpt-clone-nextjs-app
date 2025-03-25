@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useSetAtom, useAtomValue } from 'jotai'
 import { collection, getDocs } from 'firebase/firestore'
 import {
   THREAD_COLLECTION as COLLECTION,
@@ -8,14 +8,14 @@ import {
 import { db } from '@/firebase/config'
 import { currentThreadIdAtom } from '@/states/atom/currentThreadIdAtom'
 import { isFirstPostAtom } from '@/states/atom/isFirstPostAtom'
-import { messageWithDateAtom as threadMsg } from '@/states/atom/messageWithDateAtom'
+import { messageAtom as threadMsg } from '@/states/atom/messageAtom'
 
 export const useMessageInitialize = () => {
-  const currentId = useRecoilValue(currentThreadIdAtom)
-  const [, setMessages] = useRecoilState(threadMsg(currentId))
-  const messages = useRecoilValue(threadMsg(currentId))
-  const [, setIsFirstPost] = useRecoilState(isFirstPostAtom)
-  const [, setThreadId] = useRecoilState(currentThreadIdAtom)
+  const currentId = useAtomValue(currentThreadIdAtom)
+  const setMessages = useSetAtom(threadMsg)
+  const messages = useAtomValue(threadMsg)
+  const setIsFirstPost = useSetAtom(isFirstPostAtom)
+  const setThreadId = useSetAtom(currentThreadIdAtom)
 
   useEffect(() => {
     if (currentId === '') {
@@ -37,7 +37,7 @@ export const useMessageInitialize = () => {
       setMessages(messages)
     })()
     return () => {}
-  }, [currentId])
+  }, [currentId, setIsFirstPost, setThreadId, setMessages])
 
   return { messages }
 }
