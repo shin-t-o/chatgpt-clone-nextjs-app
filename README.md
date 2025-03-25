@@ -6,7 +6,7 @@ this is ChatGPT clone application with React / TypeScript / Next.js / Jotai / Fi
  - React: 18.2.0
  - TypeScript: 5.8.2
  - Jotai: 2.12.2
- - Next.js: 14.2.15
+ - Next.js: 14.2.25
  - Firebase JavaScript SDK: v9
 
 last-updated: 2025-03-25
