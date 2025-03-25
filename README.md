@@ -1,20 +1,21 @@
 # ChatGPT clone app with Next.js
-this is ChatGPT clone application with React / TypeScript / Next.js / Recoil / Firestore.
+this is ChatGPT clone application with React / TypeScript / Next.js / Jotai / Firestore.
 
 ## Package version
 
  - React: 18.2.0
- - TypeScript: 5.0.2
- - Recoil: 0.7.7
- - Next.js: 13.2.4
+ - TypeScript: 5.8.2
+ - Jotai: 2.12.2
+ - Next.js: 14.2.15
  - Firebase JavaScript SDK: v9
+last-updated: 2025-03-25
 
 ## Usage
 ### installation
 to launch application locally,
 ```bash
-yarn install
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 ### additional
